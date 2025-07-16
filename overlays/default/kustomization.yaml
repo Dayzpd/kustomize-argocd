@@ -5,3 +5,13 @@ namespace: argocd
 resources:
 - ../../bases/v3.0.6
 - app-projects.yaml
+
+patches:
+- patch: |-
+    - op: add
+      path: /data/kustomize.buildOptions
+      value: --enable-helm
+  target:
+    version: v1
+    kind: ConfigMap
+    name: argocd-cm
