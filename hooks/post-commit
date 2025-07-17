@@ -1,4 +1,4 @@
-#!/bin/bash -xv
+#!/bin/bash
 
 gitopsRepoUrl=git@github.com:Dayzpd/homelab-apps.git
 gitopsRepoPath="../homelab-gitops"
@@ -29,7 +29,7 @@ function syncArgoConfig() {
 
   if [[ $diffResults =~ $argoConfigRegex ]]; then
     echo "Changes detected for $appName argo config. Syncing to gitops repo..."
-    echo $diffResults
+
     # Stash changes and checkout to master
     currentBranch=$(git -C $gitopsRepoPath branch --show-current)
     git -C $gitopsRepoPath stash
